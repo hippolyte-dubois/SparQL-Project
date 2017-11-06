@@ -19,7 +19,8 @@ where {
 group by ?etab
 
 select ?nameOrganisation (count(?person)  as ?participants)
-from named <http://LEURDATASET>
+from <http://notreDataset>
+from <http://leurDataset>
 where {
 	?person a dbo:Person;
 		     dbo:alternativeName ?nameOrganisation;
