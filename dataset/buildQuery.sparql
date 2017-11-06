@@ -1,0 +1,61 @@
+PREFIX  foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#/>
+PREFIX  dbo:    <http://dbpedia.org/ontology/>
+PREFIX  doap:   <http://usefulinc.com/ns/doap#>
+
+# Thesis
+CONSTRUCT {
+    ?URI a doap:Project ;
+    doap:maintainer ?person ;
+    doap:name ?titre ;
+    doap:homepage ?url_these ;
+    rdf:URL ?url_video ;
+    dbo:Organisation ?univ ;
+    <http://linkeddata.org/ns#Labo> ?code_labo ;
+    dbo:year ?annee ;
+    <http://linkeddata.org/ns#typeConcours> ?type_concours ;
+    <http://linkeddata.org/ns#niveauConcours> ?niveau ;
+    <http://linkeddata.org/ns#isLaureat> ?isLaureat ;
+    <http://linkeddata.org/ns#prix> ?prix
+}
+FROM <file:dataset.csv>
+WHERE {
+    BIND(URI(?id) AS ?URI)
+    BIND(URI(CONCAT(?code_etablissement , '@' , ?prenom, '-' ,?nom)) AS ?person)
+    BIND(?code_etablissement as ?univ)
+    OPTIONAL{BIND(?prix as ?prix)}
+}
+
+# Student
+CONSTRUCT {
+    ?URI a dbo:Person ;
+    foaf:firstname ?prenom ;
+    foaf:familyname ?nom ;
+    foaf:gender ?sexe ;
+    dbo:Organisation ?univ
+}
+FROM <file:dataset.csv>
+WHERE {
+    BIND(URI(CONCAT(?code_etablissement , '@' , ?prenom, '-' ,?nom)) AS ?URI)
+    BIND(URI(?code_etablissement) as ?univ)
+}
+
+# University
+CONSTRUCT {
+    ?URI a dbo:Organisation ;
+    dbo:alternativeName ?etablissement
+}
+FROM <file:dataset.csv>
+WHERE {
+    BIND(URI(?code_etablissement) AS ?URI)
+}
+
+# Labo
+CONSTRUCT {
+    ?URI a <http://linkeddata.org/ns#Labo> ;
+    dbo:alternativeName ?labo
+}
+FROM <file:dataset.csv>
+WHERE {
+    BIND(URI(?code_labo) AS ?URI)
+}

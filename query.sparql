@@ -1,0 +1,28 @@
+PREFIX  foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#/>
+PREFIX  dbo:    <http://dbpedia.org/ontology/>
+PREFIX  doap:   <http://usefulinc.com/ns/doap#>
+
+select ?year (count(?women) as ?countwomen)
+where {
+	?women a dbo:Person;
+			foaf:gender ‘F’;
+			dbo:year ?year;
+}
+group by ?year
+
+select ?etab (count(?person) as ?countperson)
+where {
+	?person a dbo:Person;
+			dbo:alternativeName ?etab;
+}
+group by ?etab
+
+select ?nameOrganisation (count(?person)  as ?participants)
+from named <http://LEURDATASET>
+where {
+	?person a dbo:Person;
+		     dbo:alternativeName ?nameOrganisation;
+}
+group by ?nameOrganisation
+limit 5
