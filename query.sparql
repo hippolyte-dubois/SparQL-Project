@@ -25,10 +25,9 @@ CONSTRUCT {
 FROM <file:dataset_rd.csv>
 WHERE {
     BIND (URI(?Valeur) as ?URI)
-    BIND (URI(?code_region) as ?URI_REGION)
+    BIND (URI(CONCAT('http://research-funding.org/administration/region/', ?code_region) as ?URI_REGION)
     BIND (URI(CONCAT('http://fr.dbpedia.org/page/', ?code_region)) AS ?URI_REGION_DBPEDIA)
-    BIND (URI(CONCAT(http://id.insee.fr/geo/region/), ?code_region) AS ?URI_REGION_INSEE)
-
-    BIND (URI(CONCAT('http://concours-etoiles-europe.org/ns#', ?Code-region)) as ?URI_REGION_CONCOURS)
+    BIND (URI(CONCAT('http://id.insee.fr/geo/region/'), ?code_region) AS ?URI_REGION_INSEE)
+    BIND (URI(CONCAT('http://concours-etoiles-europe.org/ns#', ?code_region)) as ?URI_REGION_CONCOURS)
 
 }

@@ -1,0 +1,28 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+
+:RFStats rdf:type void:Dataset ;
+    foaf:homepage <http://research-funding.org/> .
+
+:RFStatsAdministration rdf:type void:Dataset ;
+    void:subset :RFStats ;
+    foaf:homepage <http://research-funding.org/administration/> ;
+    dcterms:subject <http://http://dbpedia.org/ressource/Research> .
+
+:DBpedia rdf:type void:Dataset ;
+    foaf:homepage <http://dbpedia.org/> .
+
+:INSEEgeo rdf:type void:Dataset ;
+    foaf:homepage <http://id.insee.fr/geo/region/> .
+
+:EtoileDataset rdf:type void:Dataset ;
+    foaf:homepage <http://concours-etoiles-europe.org/> .
+
+:RAnalysis rdf:type void:Linkset ;
+    void:target :RFStatsAdministration ;
+    void:target :DBpedia ;
+    void:target :INSEEgeo ;
+    void:target :EtoileDataset .
