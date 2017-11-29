@@ -7,7 +7,7 @@ PREFIX  igeo:   <http://rdf.insee.fr/def/geo>
 # Value
 CONSTRUCT {
     ?URI a dbo:Statistic ;
-    igeo:codeRegion ?code_region ;
+    igeo:codeRegion ?URI_REGION ;
     gn:name ?Region ;
     dbo:sex ?Sexe ;
     dbo:creator ?code_type_uai ;
@@ -15,10 +15,20 @@ CONSTRUCT {
     dbo:year ?Annee ;
     dbo:roleInEvent ?type_personnel ;
     dc:type ?Indicateur ;
-    dbo:status ?etat_donnees
+    dbo:status ?etat_donnees.
+
+    ?URI_REGION owl:sameAs ?URI_REGION_DBPEDIA;
+                owl:sameAs ?URI_REGION_CONCOURS;
+
 
 }
 FROM <file:dataset_rd.csv>
 WHERE {
     BIND (URI(?Valeur) as ?URI)
+    BIND (URI(?code_region) as ?URI_REGION)
+    BIND (URI(CONCAT('http://fr.dbpedia.org/page/', ?code_region)) AS ?URI_REGION_DBPEDIA)
+    BIND (URI(CONCAT(http://id.insee.fr/geo/region/), ?code_region) AS ?URI_REGION_INSEE)
+
+    BIND (URI(CONCAT('http://concours-etoiles-europe.org/ns#', ?Code-region)) as ?URI_REGION_CONCOURS)
+
 }
