@@ -19,6 +19,7 @@ CONSTRUCT {
 
     ?URI_REGION owl:sameAs ?URI_REGION_DBPEDIA;
                 owl:sameAs ?URI_REGION_CONCOURS;
+                owl:sameAs ?URI_REGION_INSEE.
 
 
 }
