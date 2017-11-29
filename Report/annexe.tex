@@ -1,32 +1,7 @@
 \chapter{Annexe}
 \section{Construct Query}
 \begin{figure}[H]
-\begin{lstlisting}
-	PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#/>
-	PREFIX  dbo:    <http://dbpedia.org/ontology/>
-	PREFIX  gn:     <http://www.geonames.org/ontology#>
-	PREFIX  dc:     <http://purl.org/dc/elements/1.1/>
-	PREFIX  igeo:   <http://rdf.insee.fr/def/geo>
-
-	# Value
-	CONSTRUCT {
-		?URI a dbo:Statistic ;
-		igeo:codeRegion ?code_region ;
-		gn:name ?Region ;
-		dbo:sex ?Sexe ;
-		dbo:creator ?code_type_uai ;
-		dbo:alias ?type_administration ;
-		dbo:year ?Annee ;
-		dbo:roleInEvent ?type_personnel ;
-		dc:type ?Indicateur ;
-		dbo:status ?etat_donnees
-
-	}
-	FROM <file:dataset_rd.csv>
-	WHERE {
-		BIND (URI(?Valeur) as ?URI)
-	}
-\end{lstlisting}
+\lstinputlisting{../query.sparql}
 \caption{Requête construisant le fichier RDF.}
 \end{figure}
 \label{annex:construct}
