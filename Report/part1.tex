@@ -1,7 +1,61 @@
 \chapter{Choix du Dataset et Sémantification}
+
+Nous avons choisi d'utiliser un dataset concernant \href{https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-rd-moyens-administrations-type-organisme/}{les moyens consacrés à la R\&D par les administrations}.
+
+Ce dataset est le fruit d'une enquête concernant les moyens consacrés à la R\&D réalisé par le Ministère de l'Éducation nationale, de l'Enseignement supérieur et de la Recherche en Octobre 2015. Les données onte été modifiées pour la dernière fois en octobre 2016.
+
+Ces données sont structurées dans une table avec les headers suivants:
+\begin{itemize}
+    \item Le code INSEE de la région de l'organisme (codes des anciennes régions pré réforme)
+    \item Le nom de la région
+    \item L'année du financement
+    \item Le code de l'indicateur
+    \item Le label complet de l'indicateur
+    \item Le code du type d'administration
+    \item Le label complet du type d'administration
+    \item Le code du sexe du bénéficiaire
+    \item Le label complet du sexe du bénéficiaire
+    \item Le code du type de personnel
+    \item Le label complet du type de personnel
+    \item L'état des données
+    \item La valeur de l'indicateur
+\end{itemize}
+
+\vskip1cm
+
+Pour sémantifier le dataset nous avons du l'épurer légèrement en ignorant les colonnes redondantes tels que le nom de la région (trouvable en liant notre dataset à celui de l'INSEE).
+
+Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tarql}. Pour la requête Construct, se référer à \autoref{annex:construct}.
+
+\begin{figure}[b]
+\begin{lstlisting}
+<2.53>  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  dbo:Statistic ;
+        igeo:codeRegion  "52" ;
+        gn:name          "Pays de la Loire" ;
+        dbo:creator      "4" ;
+        dbo:alias        "Autres administrations" ;
+        dbo:year         "2009" ;
+        dc:type          "Depense interieure de R&D" ;
+        dbo:status       "definitif" .
+\end{lstlisting}
+\caption{Exemple de tuple produit par la requête.}
+\end{figure}
+
+
 \chapter{Requêtes}
 \section{Dataset seul}
+
 \section{Liaison à un autre dataset}
+
+
 \chapter{Inférences}
+
+
 \chapter{Liaison au cloud Linked Data}
+\section{Sélection d'un URI}
+
+La norme Linked Data stipule que tous les URIs doivent être des URIs HTTP. Cela soulève un vrai problème dans le cas de notre dataset, car les données sont anonymisées et que le seul élément permettant de séparer deux tuples est la valeur de l'indicateur.
+
+On pourrait donc opérer une transformation sur notre dataset, et utiliser le code région comme URI, en le reliant aux valeurs au moyen d'un propriété de type :granted
+
 \chapter{Description VOID}
