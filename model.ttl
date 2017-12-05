@@ -21,6 +21,7 @@
 @prefix ns7:	<http://mappings.dbpedia.org/index.php/OntologyProperty:> .
 @prefix ns8:	<http://mappings.dbpedia.org/index.php/OntologyProperty:> .
 @prefix ns9:	<http://open.vocab.org/terms/> .
+@prefix dbo:	<http://dbpedia.org/ontology/>.
 
 
 igeo:codeRegion  a          owl:DatatypeProperty ;
@@ -37,7 +38,7 @@ dbo:sex rdf:type rdf:Property;
 		rdfs:label 	"sex"@en;
 		rdfs:range  xsd:string;
 		wdrs:describedby <dbo:data/definitions.ttl>;
-		prov:wasDerivedFrom <http://mappings.dbpedia.org/index.php/OntologyProperty:sex>;
+		prov:wasDerivedFrom <http://mappings.dbpedia.org/index.php/OntologyProperty:sex>.
 
 dbo:creator	rdf:type	owl:ObjectProperty ,
 		rdf:Property .
@@ -58,8 +59,8 @@ dbo:	ns9:defines	dbo:creator .
 
 dbo:alias	rdf:type	owl:DatatypeProperty ;
 		rdf:type rdf:Property ;
-		rdfs:subPropertyOf	dbo:alternativeName ;
-		dbo:alias	owl:equivalentProperty	wikidata:P742 ;
+		rdfs:subPropertyOf	dbo:alternativeName .
+dbo:alias	owl:equivalentProperty	wikidata:P742 ;
 	rdfs:label	"\u03C8\u03B5\u03C5\u03B4\u03CE\u03BD\u03C5\u03BC\u03BF"@el ,
 		"\u5225\u540D"@ja ,
 		"\u0430\u043B\u0438\u0458\u0430\u0441"@sr ,
@@ -75,18 +76,6 @@ dbo:alias	prov:wasDerivedFrom	ns7:alias .
 dbo:	ns8:defines	dbo:alias .
 <http://dbpedia.org/ontology/data/definitions.ttl>	ns8:describes	dbo:alias .
 
-<http://dbpedia.org/ontology/>	ns0:defines	dbo:year .
-<http://dbpedia.org/ontology/data/definitions.ttl>	ns0:describes	dbo:year .
-dbo:year	rdf:type	rdf:Property .
-dbo:year	rdf:type	owl:DatatypeProperty .
-dbo:year	rdfs:label	"jaar"@nl ,
-		"ann\u00E9e"@fr ,
-		"a\u00F1o"@es ,
-		"Jahr"@de ,
-		"year"@en ,
-		"\u0433\u043E\u0434\u0438\u043D\u0430"@sr ,
-		"\u03AD\u03C4\u03BF\u03C2"@el ,
-		"anno"@it .
 dbo:year	rdfs:range	xsd:gYear ;
 	rdfs:isDefinedBy	dbo: ;
 	owl:sameAs	dbo:year .
