@@ -25,7 +25,7 @@ Ces données sont structurées dans une table avec les headers suivants:
 
 Pour sémantifier le dataset nous avons du l'épurer légèrement en ignorant les colonnes redondantes tels que le nom de la région (trouvable en liant notre dataset à celui de l'INSEE).
 
-Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tarql}. Pour la requête Construct, se référer à \autoref{annex:construct}.
+Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tarql}. Pour la requête Construct, se référer à \autoref{1}.
 
 \begin{figure}[b]
 \begin{lstlisting}
@@ -45,8 +45,21 @@ Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tar
 \chapter{Requêtes}
 \section{Dataset seul}
 
+A RETIRER AVANT DE RENDRE : NE PAS OUBLIER DE GROUP BY dc:type SINON LES DONNÉES VEULENT RIEN DIRE OKK
+
+ICI DESCRIPTION EN LANGAGE NATUREL ET EXPLICATIONS. CODE EN ANNEXE AVEC LIEN COMME ÇA
+\begin{verbatim}
+    \autoref{req1}
+    ...
+    Dans l'annexe dans la figure:
+    \label{req1}
+\end{verbatim}
+
 \section{Liaison à un autre dataset}
 
+La liaison avec d'autres datasets se fait sur les codes régions. Nous avons choisi le dataset du groupe Alapetite - Bellot - Boudine, en essayant de voir s'il y a de potentielles corélations entre l'attribution de financements par les administrations et le taux de réussite à ce concours.
+
+A RETIRER AVANT DE RENDRE : NE PAS OUBLIER DE GROUP BY dc:type SINON LES DONNÉES VEULENT RIEN DIRE OKK
 
 \chapter{Inférences}
 
@@ -56,4 +69,11 @@ Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tar
 
 La norme Linked Data stipule que tous les URIs doivent être des URIs HTTP. Cela soulève un vrai problème dans le cas de notre dataset, car les données sont anonymisées et que le seul élément permettant de séparer deux tuples est la valeur de l'indicateur.
 
-\chapter{Description VOID}
+\chapter{Description VOiD}
+
+La description VOiD de notre dataset et de la jointure réalisées avec d'autres datasets, qu'ils appartiennent à un autre groupe ou qu'ils soient fournis par des organismes, permet de spécifier la structure de cette jointure.
+
+\begin{figure}[H]
+\lstinputlisting{../voidDescription.rdf}
+\caption{Description VOiD du projet.}
+\end{figure}
