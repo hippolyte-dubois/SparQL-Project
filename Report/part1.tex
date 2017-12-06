@@ -45,7 +45,18 @@ Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tar
 \chapter{Requêtes}
 \section{Dataset seul}
 
-A RETIRER AVANT DE RENDRE : NE PAS OUBLIER DE GROUP BY dc:type SINON LES DONNÉES VEULENT RIEN DIRE OKK
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ex: <http://example.org/>
+PREFIX dbo:  <http://dbpedia.org/ontology/>
+PREFIX dc:  <http://purl.org/dc/elements/1.1/>
+select ?year ?type (count(?x) as ?countwomen)
+where {
+    ?x dbo:sex "Femmes";
+        dbo:year ?year;
+        dc:type ?type.
+}
+group by ?year ?type
 
 ICI DESCRIPTION EN LANGAGE NATUREL ET EXPLICATIONS. CODE EN ANNEXE AVEC LIEN COMME ÇA
 \begin{verbatim}
@@ -63,6 +74,15 @@ A RETIRER AVANT DE RENDRE : NE PAS OUBLIER DE GROUP BY dc:type SINON LES DONNÉE
 
 \chapter{Inférences}
 
+Via apache fuseki nous avons pu inferé des triples et voir la modifications sur notre data set. Le changement est l'apparition de nouveau triple concernant le modèle du data set, par exemple :
+1	rdfs:domain rdfs:domain rdf:Property
+2	rdfs:domain rdfs:range  rdfs:Class
+3	rdfs:domain rdf:type    rdf:Property
+4	<http://www.w3.org/2002/07/owl#DatatypeProperty>  rdfs:subClassOf rdf:Property
+5	<http://www.w3.org/2002/07/owl#Property>  rdf:type  rdfs:Class
+
+Ces tuples inferé sont le resultat de l'application des règles OWL sur les ontologies de chaque espèces de nommage (car nous avons tentés au mieux d'utilisé des nommages connu et cohérent à nos données).
+Les inférences ont donc déduit des propriétés par rapport aux ontologies des propriétés du modèle de notre data set.
 
 \chapter{Liaison au cloud Linked Data}
 \section{Sélection d'un URI}
