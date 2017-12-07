@@ -45,32 +45,33 @@ Le fichier RDF a été construit au moyen de \href{https://tarql.github.io/}{tar
 \chapter{Requêtes}
 \section{Dataset seul}
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ex: <http://example.org/>
-PREFIX dbo:  <http://dbpedia.org/ontology/>
-PREFIX dc:  <http://purl.org/dc/elements/1.1/>
-select ?year ?type (count(?x) as ?countwomen)
-where {
-    ?x dbo:sex "Femmes";
-        dbo:year ?year;
-        dc:type ?type.
-}
-group by ?year ?type
-
-ICI DESCRIPTION EN LANGAGE NATUREL ET EXPLICATIONS. CODE EN ANNEXE AVEC LIEN COMME ÇA
 \begin{verbatim}
     \autoref{req1}
-    ...
+    La premiere requète a pour but d'afficher le nombre de projet subventionner grouper par année, qui ont comme chef d'équipe une femme. On peut ainsi constater l'evolution du nombre de projet selon les année
     Dans l'annexe dans la figure:
-    \label{req1}
+    % \label{req1}
 \end{verbatim}
+
+\begin{verbatim}
+    \autoref{req2}
+    Cette seconde requète permet d'etudier le dynamisme des régions sur le fil des années. Le type de projet sert à differencier les secteurs, pour une étude qui pourrait être plus spécifique.
+    Dans l'annexe dans la figure:
+    % \label{req2}
+\end{verbatim}
+
+% ICI DESCRIPTION EN LANGAGE NATUREL ET EXPLICATIONS. CODE EN ANNEXE AVEC LIEN COMME ÇA
+% \begin{verbatim}
+%     \autoref{req1}
+%     ...
+%     Dans l'annexe dans la figure:
+%     \label{req1}
+% \end{verbatim}
 
 \section{Liaison à un autre dataset}
 
 La liaison avec d'autres datasets se fait sur les codes régions. Nous avons choisi le dataset du groupe Alapetite - Bellot - Boudine, en essayant de voir s'il y a de potentielles corélations entre l'attribution de financements par les administrations et le taux de réussite à ce concours.
 
-A RETIRER AVANT DE RENDRE : NE PAS OUBLIER DE GROUP BY dc:type SINON LES DONNÉES VEULENT RIEN DIRE OKK
+% A RETIRER AVANT DE RENDRE : NE PAS OUBLIER DE GROUP BY dc:type SINON LES DONNÉES VEULENT RIEN DIRE OKK
 
 \chapter{Inférences}
 

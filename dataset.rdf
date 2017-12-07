@@ -1,8 +1,8 @@
-@prefix dbo:  <http://dbpedia.org/ontology/> .
-@prefix igeo:  <http://rdf.insee.fr/def/geo> .
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#/> .
-@prefix gn:  <http://www.geonames.org/ontology#> .
-@prefix dc:  <http://purl.org/dc/elements/1.1/> .
+@prefix dbo:  <http://dbpedia.org/ontology/>.
+@prefix igeo:  <http://rdf.insee.fr/def/geo>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#/>.
+@prefix gn:  <http://www.geonames.org/ontology#>.
+@prefix dc:  <http://purl.org/dc/elements/1.1/>.
 
 <2.53>  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  dbo:Statistic ;
         igeo:codeRegion  "52" ;
